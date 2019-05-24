@@ -1,6 +1,7 @@
 .aww-img{
     max-width: 300px;
     height: auto;
+    border-radius: 10px;
 }
 
 .aww-video{
@@ -8,11 +9,19 @@
     height: auto;
 }
 
+.aww-video, .aww-img{
+    opacity: .8l
+}
+
 .aww-title{
+    font-size: 20px;
     width: 300px;
+    margin-bottom: 10px;
+    line-height: 20px;
     text-align: center;
 }
 
 .aww-container{
     max-width: 50%;
+    transition: all 200ms ease-in-out;
 }
