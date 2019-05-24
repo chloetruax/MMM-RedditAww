@@ -5,7 +5,7 @@ Simple magic mirror module that pulls a set number of posts from r/WritingPrompt
 
 
 ## Example Of the Post
-![ExamplePosts](./MMM-RedditWritingPrompts.PNG)
+![ExamplePosts](./MMM-RedditAww.PNG)
 
 ## Configuration
 
@@ -15,6 +15,6 @@ Simple magic mirror module that pulls a set number of posts from r/WritingPrompt
     position: "top-left", //position,
     postChangeTime: 60000, // Time the visible post refreshes default is one minute
     postUpdateTime: 1200000, // Time between reloads of pulls, default is 20 mins
-    showVideoes: true // Choose whether or not to show videos default is true.
+    showVideos: true // Choose whether or not to show videos default is true.
 },
 ```
