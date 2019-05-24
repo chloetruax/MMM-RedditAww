@@ -1,0 +1,18 @@
+.aww-img{
+    max-width: 300px;
+    height: auto;
+}
+
+.aww-video{
+    max-width: 300px;
+    height: auto;
+}
+
+.aww-title{
+    width: 300px;
+    text-align: center;
+}
+
+.aww-container{
+    max-width: 50%;
+}
