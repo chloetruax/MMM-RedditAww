@@ -1,6 +1,6 @@
-# Reddit Writing Prompts Module
+# Reddit Aww Module
 
-Simple magic mirror module that pulls a set number of posts from r/WritingPrompts. This was written to allow ideally 5 posts but could show more to get your creating brain going.
+Simple magic mirror module that pulls a set number of posts from r/Aww. This will take the top posts from `hot` in `r/aww` and display them. It will display a random post and then refresh them until all posts are used once. It will then pull the new top posts (there might be some overlap depending on the `postChangeTime`) and cycles through them.
 
 
 
@@ -11,10 +11,9 @@ Simple magic mirror module that pulls a set number of posts from r/WritingPrompt
 
 ``` javascript
 {
-    module: "MMM-RedditWritingPrompts",
+    module: "MMM-RedditAww",
     position: "top-left", //position,
     postChangeTime: 60000, // Time the visible post refreshes default is one minute
-    postUpdateTime: 1200000, // Time between reloads of pulls, default is 20 mins
     showVideos: true // Choose whether or not to show videos default is true.
 },
 ```

@@ -11,11 +11,9 @@ Module.register("MMM-RedditAww", {
 	// Default module config.
 	defaults: {
 		postChangeTime: 10000,
-		postUpdateTime: 1200000,
 		showVideos: true
 	},
 	posts: [],
-	changeInterval: null,
 
 	// Define start sequence.
 	start: function () {
@@ -29,18 +27,12 @@ Module.register("MMM-RedditAww", {
 		if (!config.showVideos) {
 			config.showVideos = this.defaults.showVideos;
 		}
-		this.getPosts();
-		let self = this;
-		setInterval(function(){self.getPosts()}, this.config.postUpdateTime);
 	},
 	getStyles: function () {
 		return ["MMM-RedditAww.css"];
 	},
 
 	getPosts: function () {
-		if (this.changeInterval) {
-			clearInterval(this.changeInterval);
-		}
 		let self = this;
 		fetch('https://www.reddit.com/r/aww/hot.json')
 			.then(res => res.json())
@@ -55,17 +47,16 @@ Module.register("MMM-RedditAww", {
 			.then(posts => {
 				self.posts = posts;
 				self.updateDom();
-				self.changeInterval = setInterval(
-					function(){self.updateDom()}, self.config.postChangeTime)
 			})
 	},
 	// Override dom generator.
 	getDom: function () {
 		let wrapper = document.createElement("div");
-		if(this.posts.length == 0){
+		if(this.posts.length == 0 ){
+			this.getPosts();
 			return wrapper;
 		}
-		let rdmPost = this.posts[Math.floor(Math.random()*this.posts.length)].data
+		let rdmPost = this.posts.splice(Math.floor(Math.random()*this.posts.length), 1)[0].data;
 		if(rdmPost.crosspost_parent_list){
 			rdmPost = rdmPost.crosspost_parent_list[0];
 		}
@@ -82,6 +73,8 @@ Module.register("MMM-RedditAww", {
 			mediaContainer.innerHTML = this.buildImg(rdmPost)
 		}
 		wrapper.appendChild(mediaContainer);
+		let self = this;
+		setTimeout(function(){self.updateDom()}, self.config.postChangeTime);
 		return wrapper;
 	},
 	buildVideo(video){
